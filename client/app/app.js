@@ -8,7 +8,7 @@ angular.module('worktogethrApp', [
   'ui.router',
   'ui.bootstrap',
   //'angularFileUpload',
-  //'lr.upload'
+  'lr.upload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

@@ -4,7 +4,7 @@ angular.module('worktogethrApp')
   .controller('AssignmentCtrl', function ($scope, $location, $http
   , $q
   , $window
-  , $upload
+  //, $upload
   ) {
     $scope.question_view = false;
     $scope.myModelObj;
@@ -79,6 +79,12 @@ angular.module('worktogethrApp')
     }
     $scope.assignment_questions = $scope.getAssignmentQuestions($scope.assignment_id);
 
+    // TODO: create binders
+    //var user_id = 'sadfdsaf';
+    //$http.post('/' + user_id + '/binders', {name: $scope.question_id})
+    //.success(function(data, status, headers, config) {
+      //console.log('created binder. data: ', data);
+    //})
     
     $scope.clickQuestion = function(question_id) {
       $location.url('assignment/' + $scope.assignment_id + '/question/' + question_id);

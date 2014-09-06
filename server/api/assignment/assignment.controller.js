@@ -8,6 +8,30 @@ var User = require('../user/user.model');
 var exec = require('child_process').exec,
     child;
 
+var uploader = require('../helper/uploader'),
+    path = require('path'),
+    fs = require('fs');
+
+
+exports.uploadAssignment = function(req,res, callback){    
+    console.log('in uploadAssignment');
+    console.log('req files: ', req.file);
+    console.log('req body: ', req.body);
+    uploader.processFileUpload(req, ['.pdf', '.jpeg', '.png'], function(uploadError, tempPath, formPayload){
+
+    var fileExtenstion = path.extname(tempPath).toLowerCase();
+    var targetPath = "/exampleUploadDir/testFile" + fileExtenstion;
+
+    fs.rename(tempPath, targetPath, function(error) {
+      if(error){
+        return callback("cant upload employee image");
+      }
+
+      callback(null, newFileName);
+    });
+  });
+}
+
 /*// Get list of assignments*/
 //exports.getMyAssignmentsTest = function(req, res) {
   //console.log('req.user: ', req.user);
@@ -83,13 +107,13 @@ exports.destroy = function(req, res) {
 };
 
 //
-exports.uploadAssignment = function(req, res) {
-  console.log('in uploadAssignment');
-  console.log('req files: ', req.file);
-  console.log('req body: ', req.body);
+//exports.uploadAssignment = function(req, res) {
+  //console.log('in uploadAssignment');
+  //console.log('req files: ', req.file);
+  //console.log('req body: ', req.body);
 
-  return res.send(204);
-};
+  //return res.send(204);
+//};
 
 //
 exports.manualUploadAssignment = function(req, res) {
@@ -137,6 +161,7 @@ exports.manualUploadAssignment = function(req, res) {
             req.user.assignments.push(assignment);
             req.user.save(function(err) {
 
+            // convert to image first with pdftoppm -png sample_assignment newname
             // TODO: run java code
 
 //'java -cp bin:dist/lib/itextpdf-5.5.2.jar:dist/lib/itext-pdfa-5.5.2-javadoc.jar:dist/lib/itext-xtra-5.5.2-sources.jar:dist/lib/itextpdf-5.5.2-javadoc.jar:dist/lib/itext-pdfa-5.5.2-sources.jar:dist/lib/levigo-jbig2-imageio-1.6.1.jar:dist/lib/itextpdf-5.5.2-sources.jar:dist/lib/itext-xtra-5.5.2.jar:dist/lib/pdfbox-app-1.8.6.jar:dist/lib/itext-pdfa-5.5.2.jar:dist/lib/itext-xtra-5.5.2-javadoc.jar javaapplication1/JavaApplication1'
