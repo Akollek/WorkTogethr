@@ -31,6 +31,7 @@ angular.module('worktogethrApp')
     };
 
     // gets all assignments
+    // TODO: get only assignments for class
     $scope.getAssignments = function() {
       $http.get('/api/assignments')
         .success(function(data, status, headers, config) {
