@@ -5,6 +5,8 @@ var Assignment = require('./assignment.model');
 var Question = require('../question/question.model');
 var Course = require('../course/course.model');
 var User = require('../user/user.model');
+var exec = require('child_process').exec,
+    child;
 
 /*// Get list of assignments*/
 //exports.getMyAssignmentsTest = function(req, res) {
@@ -134,7 +136,16 @@ exports.manualUploadAssignment = function(req, res) {
           assignment.save(function(err) {
             req.user.assignments.push(assignment);
             req.user.save(function(err) {
-              return res.json(200, assignment);
+
+              child = exec('cat *.js bad_file | wc -l',
+              function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                  console.log('exec error: ' + error);
+                }
+                return res.json(200, assignment);
+              });
             })
           });
         })

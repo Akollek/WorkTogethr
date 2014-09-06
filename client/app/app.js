@@ -7,8 +7,8 @@ angular.module('worktogethrApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'angularFileUpload',
-  'lr.upload'
+  //'angularFileUpload',
+  //'lr.upload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
