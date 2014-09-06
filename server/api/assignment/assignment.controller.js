@@ -62,8 +62,8 @@ exports.destroy = function(req, res) {
 //
 exports.uploadAssignment = function(req, res) {
   console.log('in uploadAssignment');
-  console.log('req files: ', req.files);
-  console.log('req body: ', req);
+  console.log('req files: ', req.file);
+  console.log('req body: ', req.body);
 
   return res.send(204);
 };
