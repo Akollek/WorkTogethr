@@ -4,13 +4,21 @@ var _ = require('lodash');
 var Assignment = require('./assignment.model');
 var Question = require('../question/question.model');
 var Course = require('../course/course.model');
-var auth = require('../../auth/auth.service');
+var User = require('../user/user.model');
+
+/*// Get list of assignments*/
+//exports.getMyAssignmentsTest = function(req, res) {
+  //console.log('req.user: ', req.user);
+  //return res.send(200);
+//};
 
 // Get list of assignments
+// doesn't ensure courses are unique
+// only ensures it only lists the student's assignment
 exports.getMyAssignments = function(req, res) {
+  console.log('req.user: ', req.user);
   User.findOne({'_id': req.user._id})
   .populate('assignments')
-  .populate('questions')
   .exec(function (err, user) {
     if(err) { return handleError(res, err); }
     return res.json(200, user.assignments);
@@ -136,5 +144,6 @@ exports.manualUploadAssignment = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log('error: ', err);
   return res.send(500, err);
 }

@@ -87,13 +87,15 @@ angular.module('worktogethrApp')
       $http.post('/api/assignments/manual_upload', update)
         .success(function(data, status, headers, config) {
           console.log('assignment: ', data);
+          $scope.assignments.push(data);
         })
     };
 
     // gets all assignments
     // TODO: get only assignments for class
     $scope.getAssignments = function() {
-      $http.get('/api/assignments')
+      var class_id = $location.$$url.split('/')[2];
+      $http.post('/api/assignments/get_my_assignments', {class_id: class_id})
         .success(function(data, status, headers, config) {
           console.log('assignments: ', data);
           $scope.assignments = data;
