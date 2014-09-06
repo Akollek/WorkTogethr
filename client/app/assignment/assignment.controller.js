@@ -41,9 +41,9 @@ angular.module('worktogethrApp')
       iframeheight: "650px",
       autostart_meet: false,
       autostart_note: true,
-      start_chat: function(event) {
-      alert("Chat started session Id: " + event.session_id);
-      },
+      //start_chat: function(event) {
+      //alert("Chat started session Id: " + event.session_id);
+      //},
       start_meet: function(event) {
       alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
       },
@@ -61,7 +61,32 @@ angular.module('worktogethrApp')
       }
       };
       Moxtra.chat(options);
-      $scope.latex="latex";
+      $scope.latex="\\LaTeX";
+
+  //
+  //  Use a closure to hide the local variables from the
+  //  global namespace
+  //
+  (function () {
+    var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
+    var math = null;                // the element jax for the math output.
+
+    //
+    //  Get the element jax when MathJax has produced it.
+    //
+    QUEUE.Push(function () {
+      math = MathJax.Hub.getAllJax("MathOutput")[0];
+    });
+
+    //
+    //  The onchange event handler that typesets the
+    //  math entered by the user
+    //
+    window.UpdateMath = function (TeX) {
+      QUEUE.Push(["Text",math,"\\displaystyle{"+TeX+"}"]);
+    }
+  })();
+
 
           // gets appropriate question_img
           $scope.question_img = _.filter($scope.assignment_questions, function(q) {
