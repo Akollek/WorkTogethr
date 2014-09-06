@@ -1,0 +1,45 @@
+body {
+	font-family: 'Source Sans Pro';
+}
+
+aside {
+	border: #ddd 1px solid;
+	width: 20rem;
+	font-size: 1.3rem;
+	font-weight: 300;
+}
+
+aside > ul.top {
+	text-align: left;
+}
+
+aside > ul.bottom, .social-data {
+	color: #fff;
+	background: #000;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 1rem;
+}
+
+aside > ul .bottom {
+	height: 75vh;
+}
+
+h1 {
+	margin-left: 3rem
+}
+aside, aside > ul > li, aside > ul.top {
+	padding: 0
+}
+
+aside > ul.top > li:hover {
+	transition-duration: 0s;
+	background: #ddd;
+}
+
+.jumbotron {
+	background: url('/login/img/backstretch.jpeg');
+	margin: 3rem;
+	width: 100%
+
+}

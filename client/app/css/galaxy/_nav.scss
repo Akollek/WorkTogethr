@@ -1,0 +1,162 @@
+aside
+{
+    
+    text-align: center;
+    z-index: 10;
+
+    height: 100vh;
+    margin: 0;
+    padding: 1em;
+    opacity: $low-transparency;
+    background-color: $nav-color;
+}
+
+aside > ul > li > a, aside > ul > li
+{
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    color: constrast-color($nav-color);
+}
+
+aside > ul > li > a:hover, aside > ul > li
+{
+    transition-duration: .3s;
+    @if (lightness($nav-color) > 50)
+    {
+        /* Lighter navs should have darker feedback */
+        color: darken(contrast-color($nav-color), 50);
+    }
+    @else
+    {
+        /* Darker navs should have brighter feedback */
+        color: lighten(contrast-color($nav-color), 50);
+    }
+}
+
+aside > ul
+{
+    padding: 2em;
+
+}
+aside [logo]
+{
+    float: left;
+
+    width: auto;
+    max-height: 50px;
+    padding: 0 50px 0 50px;
+}
+
+aside [logo]:hover
+{
+    border: 0;
+}
+
+aside [active]
+{
+    padding: #{$lg-opacity}rem;
+
+    color: #fff;
+}
+
+footer
+{
+    bottom: 0;
+
+    display: table;
+
+    width: 100%;
+    margin-top: 3rem;
+    padding: 5rem 0;
+
+    text-align: center;
+
+    color: darken(contrast-color($footer-background), 20);
+    background: $footer-background;
+}
+
+li + li:before
+{
+    margin: 0 10px;
+}
+
+/* Dropdown */
+
+[g~='caret']
+{
+    display: inline-block;
+
+    width: 0;
+    height: 0;
+    margin-top: -4px;
+    margin-right: 0;
+    margin-left: 7px;
+
+    vertical-align: middle;
+
+    border-top: 6px solid #717d82;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+
+nav[g~='grouped'] > ul
+{
+    font-size: 13px;
+
+    position: absolute;
+
+    float: left;
+
+    min-width: 7rem;
+    margin: 15px 0 0;
+    padding: 10px 0;
+
+    border: 1px solid #c1cbd2;
+    border-radius: 3px;
+    background: #fff;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 1px 2px rgba(113,125,130,.1);
+            box-shadow: 0 1px 2px rgba(113,125,130,.1);
+}
+
+nav[g~='grouped'] > ul > li
+{
+    line-height: 1.4;
+
+    display: block;
+    clear: both;
+
+    padding: 6px 20px;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    opacity: .8;
+}
+
+nav[g~="grouped"] > ul {
+	margin-top: 3rem;
+	margin-left: 5.5rem;
+}
+nav[g~='grouped'] > ul[g~='dropdown'] > li:hover
+{
+    background: #eee;
+}
+
+nav[g~="grouped"]:hover > ul[g~="dropdown"] > li
+{
+    display: block;
+}
+
+nav[g~="grouped"] > span[g~="arrow"] {
+	left: 50%;
+	margin-left: -7px;
+	position: absolute;
+	top: -8px;
+	background-position: -727px 0;
+	height: 9px;
+	width: 15px;
+
+}

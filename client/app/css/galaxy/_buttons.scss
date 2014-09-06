@@ -1,0 +1,96 @@
+*:hover {
+	opacity: 1;
+}
+
+button, input[type="submit"] {
+	@include button-colors($default-color);
+	padding: 8px 20px 8px 20px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	cursor: pointer;
+	text-shadow: none;
+	background: $default-color;
+	@include small-border;
+	white-space: nowrap;	
+	opacity: .8;
+}
+button:hover, input[type="submit"]:hover {
+	filter: none;
+	box-shadow: none;
+}
+button:active, input[type="submit"]:active, button[active], input[type="submit"] [active] {
+	opacity: .8;
+}
+
+button[disabled], input[type="submit"][disabled] {
+	border: 0;
+	background-image: none;
+	opacity: .4;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+[g~="primary"] {
+	@include button-colors($primary-color);
+}
+[g~="success"] {
+	@include button-colors($success-color);
+}
+[g~="warning"] {
+	@include button-colors($warning-color);
+}
+[g~="danger"] {
+	@include button-colors($danger-color);
+}
+button[g~="grouped"] {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+[g~="grouped"] > button:not(:first-child):not(:last-child) {
+	border-radius: 0;
+	float: left;
+	margin-right: -3px;
+}
+[g~="grouped"] > button:first-child:not(:last-child) {
+	border-radius: 4px 0 0 4px;
+	margin-right: -4px;
+	float: left;
+}
+[g~="grouped"] > button:last-child:not(:first-child) {
+	border-radius: 4px 4px 4px 0;
+	float: left;
+}
+
+[g~="dropdown"] > ul {
+	display: none;
+}
+
+[g~="dropdown"] > ul > li {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+[g~="dropdown"]:focus > ul {
+	display: block;
+}
