@@ -2,7 +2,9 @@
 
 angular.module('worktogethrApp')
   .controller('AssignmentCtrl', function ($scope, $location, $http
-  , $q) {
+  , $q
+  , $window
+  ) {
     $scope.question_view = false;
 
     //$scope.assignment_questions = [
@@ -46,4 +48,11 @@ angular.module('worktogethrApp')
     $scope.assignment_questions = $scope.getAssignmentQuestions($scope.assignment_id);
 
     
+    $scope.clickQuestion = function(question_id) {
+      $location.url('assignment/' + $scope.assignment_id + '/question/' + question_id);
+      setTimeout(function() {
+        $window.location.reload();
+      }, 500) // mini timeout to allow url to update
+      //$route.reload();
+    }
   });
