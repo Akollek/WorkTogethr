@@ -1,28 +1,35 @@
 div(ng-include='"components/navbar/navbar.html"')
 
-header#banner.hero-unit
-  .container
-    h1 worktogethr
-    p.lead Work on projects and assignments. Together.
-    <!-- img(src='assets/images/yeoman.png', alt='I\'m Yeoman') -->
-
 .container
-  .row
-    .col-lg-6
-      h1.page-header Classes:
-      ul.nav.nav-tabs.nav-stacked.col-md-6.col-lg-6.col-sm-12(ng-repeat='thing in awesomeThings')
-        li
-          a(href='#', tooltip='{{thing.info}}')
-            | {{thing.name}}
-            button.close(type='button', ng-click='deleteThing(thing)') ×
-    .col-lg-6
-      form.thing-form
-        h1.page-header Add Class:
-        p.input-group
-        input.form-control(type='text', placeholder='Add a new class here', ng-model='class_id')
-        a.btn.btn-primary(href="/class/{{class_id}}") Go
+  .col-lg-6
+    form.thing-form
+      h1.page-header Add Class:
+      p.input-group
+      input.form-control(type='text', placeholder='Add a new class here', ng-model='class_id')
+      a.btn.btn-primary(href="/class/{{class_id}}") Go
+//-header#banner.hero-unit
+  //-.container
+    //-h1 worktogethr
+    //-p.lead Work on projects and assignments. Together.
+    //-<!-- img(src='assets/images/yeoman.png', alt='I\'m Yeoman') -->
 
-footer.footer
-  .container
-    p
-      | An MHacks Project
+//-.container
+  //-.row
+    //-.col-lg-6
+      //-h1.page-header Classes:
+      //-ul.nav.nav-tabs.nav-stacked.col-md-6.col-lg-6.col-sm-12(ng-repeat='thing in awesomeThings')
+        //-li
+          //-a(href='#', tooltip='{{thing.info}}')
+            //-| {{thing.name}}
+            //-button.close(type='button', ng-click='deleteThing(thing)') ×
+    //-.col-lg-6
+      //-form.thing-form
+        //-h1.page-header Add Class:
+        //-p.input-group
+        //-input.form-control(type='text', placeholder='Add a new class here', ng-model='class_id')
+        //-a.btn.btn-primary(href="/class/{{class_id}}") Go
+
+//-footer.footer
+  //-.container
+    //-p
+      //-| An MHacks Project

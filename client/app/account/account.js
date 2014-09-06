@@ -4,7 +4,7 @@ angular.module('worktogethrApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {
-        url: '/login',
+        url: '/',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginCtrl'
       })
