@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema,
+    ObjectId = Schema.Types.ObjectId;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
@@ -15,6 +16,9 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
+  school: String,
+  //school: {type: ObjectId, ref: 'School'},
+  class: {type: ObjectId, ref: 'Class'},
   facebook: {},
   twitter: {},
   google: {},

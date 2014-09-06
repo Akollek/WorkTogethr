@@ -1,3 +1,11 @@
+form(method="post", enctype="multipart/form-data", action="/api/assignments/upload")
+  input(type="text", name="username")
+  input(type="password", name="password")
+  input(type="file", name="thumbnail")
+  input(type="submit")
+//-form(action="/api/assignments/upload", method="post", enctype="multipart/form-data")
+  //-input(type="file", name="displayImage", accept="application/pdf")
+  //-input(type="submit", name="submit", value="Submit")
 .col-md-12
     | In class {{class_id}}. \[ \sum_{i=1}^{n}i=\frac{1}{2}n(n+1) \]
 
