@@ -25,6 +25,11 @@ div
 
 .container
   h3 Fake Assignment uploader
+  input(type="text", ng-model="dummy_pdf")
+  button(ng-click="manualAddPDF(dummy_pdf)") Fake upload PDF
+
+//-.container
+  h3 Fake Assignment uploader
   input(type="text", ng-model="question_images[0]")
   input(type="text", ng-model="question_images[1]")
   button(ng-click="manualAddAssignment()") Fake upload

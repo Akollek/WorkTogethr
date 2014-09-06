@@ -8,9 +8,11 @@ var User = require('../user/user.model');
 var exec = require('child_process').exec,
     child;
 
+var http = require('http');
+var fs = require('fs');
+
 var uploader = require('../helper/uploader'),
-    path = require('path'),
-    fs = require('fs');
+    path = require('path');
 
 
 exports.uploadAssignment = function(req,res, callback){    
@@ -105,6 +107,14 @@ exports.destroy = function(req, res) {
     });
   });
 };
+
+
+exports.manualAddPDF = function(req, res) {
+  var file = fs.createWriteStream("file.pdf");
+  var request = http.get("", function(response) {
+    response.pipe(file);
+  });
+}
 
 //
 //exports.uploadAssignment = function(req, res) {

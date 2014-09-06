@@ -11,6 +11,7 @@ angular.module('worktogethrApp')
   , upload
   ) {
     $scope.question_images = ['enter image url', 'http://i.imgur.com/S84BANr.jpg'];
+    $scope.dummy_pdf = 'http://www.education.gov.yk.ca/pdf/pdf-test.pdf';
 
     $scope.doUpload = function () {
       upload({
@@ -76,6 +77,20 @@ angular.module('worktogethrApp')
     }
     $scope.message = 'Hello';
 
+
+    // hackily adds an assignment with hardcoded questions
+    $scope.manualAddPdF = function() {
+      var class_id = $location.$$url.split('/')[2];
+      var update = {
+        question_images: $scope.question_images
+        , class_id: class_id
+      };
+      $http.post('/api/assignments/manual_upload', update)
+        .success(function(data, status, headers, config) {
+          console.log('assignment: ', data);
+          $scope.assignments.push(data);
+        })
+    };
 
     // hackily adds an assignment with hardcoded questions
     $scope.manualAddAssignment = function() {
