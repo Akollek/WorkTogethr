@@ -54,6 +54,13 @@ exports.destroy = function(req, res) {
   });
 };
 
+//
+exports.uploadAssignment = function(req, res) {
+  console.log('in uploadAssignment');
+  console.log(req.files);
+  return res.send(204);
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }
