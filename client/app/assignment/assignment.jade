@@ -1,0 +1,15 @@
+div.sidebar SIDEBAR
+  ul
+    li(ng-repeat="question in assignment_questions")
+      a(href="assignment/{{assignment_id}}/question/{{question._id}}") {{question._id}}
+
+div(ng-show="question_view")
+  p question view
+  | question is: {{question_id}}
+  | chatroom is here
+  | {{question_img}}
+  | (placeholder)
+  img(src="{{question_img}}", height="500px")
+
+div(ng-show="!question_view")
+  p no question selected view
