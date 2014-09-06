@@ -15,10 +15,12 @@ div(ng-show="question_view")
 div(ng-show="!question_view")
   p no question selected view
 
-input(type="text",ng-model="latex")
+<input id="MathInput" size="80" onkeypress="UpdateMath(this.value)" /> <input type="button" onclick="sendLaTeX" value="Send Equation"/><br>
+
+<div id="MathOutput" class="output" style="display: inline-block">$${}$$</div>
 
 
-p \[ {{latex}} \]
+p#mathoutput
 //-//- Moxtra
 //-script#moxtrajs(type='text/javascript', src='https://www.moxtra.com/api/js/moxtra-latest.js', data-client-id='jsT4n6rAa2I') 
 //-script(type='text/javascript').
