@@ -137,6 +137,9 @@ exports.manualUploadAssignment = function(req, res) {
             req.user.assignments.push(assignment);
             req.user.save(function(err) {
 
+            // TODO: run java code
+
+//'java -cp bin:dist/lib/itextpdf-5.5.2.jar:dist/lib/itext-pdfa-5.5.2-javadoc.jar:dist/lib/itext-xtra-5.5.2-sources.jar:dist/lib/itextpdf-5.5.2-javadoc.jar:dist/lib/itext-pdfa-5.5.2-sources.jar:dist/lib/levigo-jbig2-imageio-1.6.1.jar:dist/lib/itextpdf-5.5.2-sources.jar:dist/lib/itext-xtra-5.5.2.jar:dist/lib/pdfbox-app-1.8.6.jar:dist/lib/itext-pdfa-5.5.2.jar:dist/lib/itext-xtra-5.5.2-javadoc.jar javaapplication1/JavaApplication1'
               child = exec('cat *.js bad_file | wc -l',
               function (error, stdout, stderr) {
                 console.log('stdout: ' + stdout);
