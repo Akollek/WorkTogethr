@@ -15,34 +15,11 @@ div(ng-show="question_view")
 div(ng-show="!question_view")
   p no question selected view
 
+input(type="text",ng-model="latex")
+
+
+p \[ {{latex}} \]
 //-//- Moxtra
 //-script#moxtrajs(type='text/javascript', src='https://www.moxtra.com/api/js/moxtra-latest.js', data-client-id='jsT4n6rAa2I') 
-script(type='text/javascript').
-    var options = {
-      email: "a@b.com",
-      iframe: true,
-      tagid4iframe: "container",
-      iframewidth: "920px",
-      iframeheight: "650px",
-      autostart_meet: false,
-      autostart_note: true,
-      start_chat: function(event) {
-      alert("Chat started session Id: " + event.session_id);
-      },
-      start_meet: function(event) {
-      alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
-      },
-      end_meet: function(event) {
-      alert("Meet end event");
-      },
-      invite_member: function(event) {
-      alert("Invite member into binder Id: " + event.binder_id);
-      },
-      request_note: function(event) {
-      alert("Note start request");
-      },
-      error: function(event) {
-      alert("Chat error code: " + event.error_code + " error message: " + event.error_message);
-      }
-      };
-      Moxtra.chat(options);
+//-script(type='text/javascript').
+
