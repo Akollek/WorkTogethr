@@ -16,7 +16,9 @@ exports.index = function(req, res) {
 
 // Get a single assignment
 exports.show = function(req, res) {
-  Assignment.findById(req.params.id, function (err, assignment) {
+  Assignment.findById(req.params.id)
+  .populate('questions')
+  .exec(function (err, assignment) {
     if(err) { return handleError(res, err); }
     if(!assignment) { return res.send(404); }
     return res.json(assignment);

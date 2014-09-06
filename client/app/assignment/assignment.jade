@@ -1,7 +1,8 @@
 div.sidebar SIDEBAR
   ul
     li(ng-repeat="question in assignment_questions")
-      a(href="assignment/{{assignment_id}}/question/{{question._id}}") {{question._id}}
+      a(ng-href="assignment/{{assignment_id}}/question/{{question._id}}") {{question._id}}
+      | {{question}}
 
 div(ng-show="question_view")
   p question view
