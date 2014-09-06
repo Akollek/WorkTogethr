@@ -2,10 +2,13 @@
 
 var _ = require('lodash');
 var Assignment = require('./assignment.model');
+var Question = require('../question/question.model');
 
 // Get list of assignments
 exports.index = function(req, res) {
-  Assignment.find(function (err, assignments) {
+  Assignment.find()
+  .populate('questions')
+  .exec(function (err, assignments) {
     if(err) { return handleError(res, err); }
     return res.json(200, assignments);
   });
@@ -59,6 +62,33 @@ exports.uploadAssignment = function(req, res) {
   console.log('in uploadAssignment');
   console.log(req.files);
   return res.send(204);
+};
+
+//
+exports.manualUploadAssignment = function(req, res) {
+  console.log('image links: ', req.body);
+
+  var questions = [];
+  var question1 = new Question({
+    img: req.body.question_images[0]
+  });
+  question1.save(function(err) {
+    questions.push(question1._id);
+    var question2 = new Question({
+      img: req.body.question_images[1]
+    });
+    question2.save(function(err) {
+      questions.push(question2._id);
+      console.log('here', questions);
+      var assignment = new Assignment({
+        'questions': questions
+      });
+      console.log('assignment: ', assignment);
+      assignment.save(function(err) {
+        return res.json(200, assignment);
+      });
+    })
+  })
 };
 
 function handleError(res, err) {
