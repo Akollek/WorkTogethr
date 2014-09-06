@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var Assignment = require('./assignment.model');
 var Question = require('../question/question.model');
+var Course = require('../course/course.model');
 
 // Get list of assignments
 exports.index = function(req, res) {
@@ -71,26 +72,50 @@ exports.uploadAssignment = function(req, res) {
 //
 exports.manualUploadAssignment = function(req, res) {
   console.log('image links: ', req.body);
+  console.log('class id: ', req.body.class_id);
 
-  var questions = [];
-  var question1 = new Question({
-    img: req.body.question_images[0]
-  });
-  question1.save(function(err) {
-    questions.push(question1._id);
-    var question2 = new Question({
-      img: req.body.question_images[1]
-    });
-    question2.save(function(err) {
-      questions.push(question2._id);
-      console.log('here', questions);
-      var assignment = new Assignment({
-        'questions': questions
+  Course.findOne({'name': req.body.class_id})
+  .exec(function(err, course) {
+    if (err) { return handleError(res, err); }
+
+    // create course if doesn't exist
+    // continue if it does
+    !function(callback) {
+      if(course == null) {
+        course = new Course({
+          name: req.body.class_id
+        });
+        course.save(function(err) {
+          if(!err) {
+            callback(course);
+          }
+        });
+      } else {
+        callback(course);
+      }
+    }(function(course) {
+      var questions = [];
+      var question1 = new Question({
+        img: req.body.question_images[0]
       });
-      console.log('assignment: ', assignment);
-      assignment.save(function(err) {
-        return res.json(200, assignment);
-      });
+      question1.save(function(err) {
+        questions.push(question1._id);
+        var question2 = new Question({
+          img: req.body.question_images[1]
+        });
+        question2.save(function(err) {
+          questions.push(question2._id);
+          console.log('here', questions);
+          var assignment = new Assignment({
+            'questions': questions
+            , 'course': course
+          });
+          console.log('assignment: ', assignment);
+          assignment.save(function(err) {
+            return res.json(200, assignment);
+          });
+        })
+      })
     })
   })
 };

@@ -18,7 +18,7 @@ var UserSchema = new Schema({
   salt: String,
   school: String,
   //school: {type: ObjectId, ref: 'School'},
-  class: {type: ObjectId, ref: 'Class'},
+  courses: [{type: ObjectId, ref: 'Course'}],
   facebook: {},
   twitter: {},
   google: {},

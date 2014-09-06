@@ -79,7 +79,12 @@ angular.module('worktogethrApp')
 
     // hackily adds an assignment with hardcoded questions
     $scope.manualAddAssignment = function() {
-      $http.post('/api/assignments/manual_upload', {question_images: $scope.question_images})
+      var class_id = $location.$$url.split('/')[2];
+      var update = {
+        question_images: $scope.question_images
+        , class_id: class_id
+      };
+      $http.post('/api/assignments/manual_upload', update)
         .success(function(data, status, headers, config) {
           console.log('assignment: ', data);
         })
