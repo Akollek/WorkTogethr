@@ -12,6 +12,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.post('/upload', controller.uploadAssignment);
-router.post('/manual_upload', controller.manualUploadAssignment);
+router.post('/manual_upload', auth.isAuthenticated(), controller.manualUploadAssignment);
+router.get('/get_my_assignments', auth.isAuthenticated(), controller.index);
 
 module.exports = router;

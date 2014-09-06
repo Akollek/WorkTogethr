@@ -4,6 +4,18 @@ var _ = require('lodash');
 var Assignment = require('./assignment.model');
 var Question = require('../question/question.model');
 var Course = require('../course/course.model');
+var auth = require('../../auth/auth.service');
+
+// Get list of assignments
+exports.getMyAssignments = function(req, res) {
+  User.findOne({'_id': req.user._id})
+  .populate('assignments')
+  .populate('questions')
+  .exec(function (err, user) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, user.assignments);
+  });
+};
 
 // Get list of assignments
 exports.index = function(req, res) {
@@ -112,7 +124,10 @@ exports.manualUploadAssignment = function(req, res) {
           });
           console.log('assignment: ', assignment);
           assignment.save(function(err) {
-            return res.json(200, assignment);
+            req.user.assignments.push(assignment);
+            req.user.save(function(err) {
+              return res.json(200, assignment);
+            })
           });
         })
       })

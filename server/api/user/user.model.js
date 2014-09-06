@@ -19,6 +19,7 @@ var UserSchema = new Schema({
   school: String,
   //school: {type: ObjectId, ref: 'School'},
   courses: [{type: ObjectId, ref: 'Course'}],
+  assignments: [{type: ObjectId, ref: 'Assignment'}],
   facebook: {},
   twitter: {},
   google: {},
