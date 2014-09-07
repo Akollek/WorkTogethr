@@ -13,7 +13,15 @@ angular.module('worktogethrApp')
     $scope.question_images = ['enter image url', 'http://i.imgur.com/S84BANr.jpg'];
     $scope.dummy_pdf = 'http://www.education.gov.yk.ca/pdf/pdf-test.pdf';
 
+    // Global handler for onSuccess that adds the uploaded files to the list
+    $scope.onGlobalSuccess = function (response) {
+      console.log('AppCtrl.onSuccess', response);
+      $scope.responseData = response.data;
+      $scope.uploads = $scope.uploads.concat(response.data.files);
+    };
+
     $scope.doUpload = function () {
+      console.log('doUpload');
       upload({
         url: '/upload',
         data: {

@@ -4,9 +4,9 @@ var express = require('express');
 var passport = require('passport');
 var auth = require('../auth.service');
 
-var router = express.Router();
+var app = express();
 
-router.post('/', function(req, res, next) {
+app.post('/', function(req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     var error = err || info;
     if (error) return res.json(401, error);
@@ -17,4 +17,4 @@ router.post('/', function(req, res, next) {
   })(req, res, next)
 });
 
-module.exports = router;
+module.exports = app;

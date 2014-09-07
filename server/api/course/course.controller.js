@@ -1,4 +1,3 @@
-'use strict';
 
 var _ = require('lodash');
 var Course = require('./course.model');
@@ -57,3 +56,5 @@ exports.destroy = function(req, res) {
 function handleError(res, err) {
   return res.send(500, err);
 }
+
+module.exports = exports;

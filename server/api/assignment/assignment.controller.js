@@ -16,23 +16,48 @@ var uploader = require('../helper/uploader'),
 
 
 exports.uploadAssignment = function(req,res, callback){    
-    console.log('in uploadAssignment');
-    console.log('req files: ', req.file);
-    console.log('req body: ', req.body);
-    uploader.processFileUpload(req, ['.pdf', '.jpeg', '.png'], function(uploadError, tempPath, formPayload){
+  console.log(req.files.file);
 
-    var fileExtenstion = path.extname(tempPath).toLowerCase();
-    var targetPath = "/exampleUploadDir/testFile" + fileExtenstion;
+  var files = util.isArray(req.files.file) ? req.files.file : [req.files.file];
 
-    fs.rename(tempPath, targetPath, function(error) {
-      if(error){
-        return callback("cant upload employee image");
-      }
+  console.log(files);
 
-      callback(null, newFileName);
+  files.forEach(function (file) {
+    fs.rename(file.path, path.resolve(uploadPath, file.name), function(err) {
+      if (err) throw err;
+      fs.unlink(file.path, function() {
+        if (err) throw err;
+      });
     });
   });
-}
+
+  // Force response type to text/html otherwise IE will try to open the returned json response.
+  res.contentType('text/html');
+
+  // Really should return json when all files have been saved, but we are simplifying things a bit here.
+  // We also delay it a bit, so we can see the nice loader
+  setTimeout((function() {
+    res.json({files: files.map(function (file) { return file.name; }) });
+  }), 2000);
+};
+//exports.uploadAssignment = function(req,res, callback){    
+    //console.log('in uploadAssignment');
+    //console.log('req files: ', req.files);
+    //console.log('req body: ', req.body);
+    //uploader.processFileUpload(req, ['.pdf', '.jpeg', '.png'], function(uploadError, tempPath, formPayload){
+
+    //var fileExtenstion = path.extname(tempPath).toLowerCase();
+    //var targetPath = "/exampleUploadDir/testFile" + fileExtenstion;
+
+    //fs.rename(tempPath, targetPath, function(error) {
+      //if(error){
+        //return callback("cant upload employee image");
+      //}
+
+      //callback(null, newFileName);
+    //});
+  //});
+//}
 
 /*// Get list of assignments*/
 //exports.getMyAssignmentsTest = function(req, res) {

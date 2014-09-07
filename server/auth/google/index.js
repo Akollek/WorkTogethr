@@ -4,9 +4,9 @@ var express = require('express');
 var passport = require('passport');
 var auth = require('../auth.service');
 
-var router = express.Router();
+var app = express();
 
-router
+app
   .get('/', passport.authenticate('google', {
     failureRedirect: '/signup',
     scope: [
@@ -21,4 +21,4 @@ router
     session: false
   }), auth.setTokenCookie);
 
-module.exports = router;
+module.exports = app;

@@ -2,7 +2,6 @@
  * Main application file
  */
 
-'use strict';
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -19,6 +18,7 @@ if(config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
+
 var server = require('http').createServer(app);
 var socketio = require('socket.io')(server, {
   serveClient: (config.env === 'production') ? false : true,

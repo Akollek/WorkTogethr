@@ -4,9 +4,9 @@ var express = require('express');
 var passport = require('passport');
 var auth = require('../auth.service');
 
-var router = express.Router();
+var app = express();
 
-router
+app
   .get('/', passport.authenticate('facebook', {
     scope: ['email', 'user_about_me'],
     failureRedirect: '/signup',
@@ -18,4 +18,4 @@ router
     session: false
   }), auth.setTokenCookie);
 
-module.exports = router;
+module.exports = app;

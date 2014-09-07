@@ -1,4 +1,7 @@
-div(class="btn btn-primary btn-upload", upload-button, file="file", url="/api/assignments/upload", on-success="onSuccess(response)") Upload
+upload-button(class="btn btn-primary btn-upload", url="/api/assignments/upload", param="file", accept="acceptTypes", multiple="allowMultiple", force-iframe-upload="forceIframeUpload", data="uploadData", on-upload="onUpload(files)", on-success="onGlobalSuccess(response)", on-error="onError(response)", on-complete="onComplete(response)") Fileupload
+
+//-upload-button(class="btn btn-primary btn-upload", file="file", url="/api/assignments/upload", on-success="onSuccess(response)") Upload
+
 //-div
   input(type="text", ng-model="myModelObj")
   input(type="file", ng-file-select="onFileSelect($files)")

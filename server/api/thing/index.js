@@ -3,13 +3,13 @@
 var express = require('express');
 var controller = require('./thing.controller');
 
-var router = express.Router();
+var app = express();
 
-router.get('/', controller.index);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+app.get('/', controller.index);
+app.get('/:id', controller.show);
+app.post('/', controller.create);
+app.put('/:id', controller.update);
+app.patch('/:id', controller.update);
+app.delete('/:id', controller.destroy);
 
-module.exports = router;
+module.exports = app;
