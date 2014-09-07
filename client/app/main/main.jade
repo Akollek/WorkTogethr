@@ -26,12 +26,6 @@ style.
       h3.page-header Add Class:
       //-p.input-group
       input.form-control#inputclass(type='text', placeholder='Add a new class here', ng-model='class_id')
-        script.
-          $('#inputclass').keydown(function (e){
-            if(e.keyCode == 13){
-            addClass();
-          }
-          })
       a.btn.btn-primary(ng-click="addClass()") Go
 
 
