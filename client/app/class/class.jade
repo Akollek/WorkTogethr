@@ -1,27 +1,28 @@
-div(class="btn btn-primary btn-upload", upload-button, file="file", url="/api/assignments/upload", on-success="onSuccess(response)") Upload
-//-div
-  input(type="text", ng-model="myModelObj")
-  input(type="file", ng-file-select="onFileSelect($files)")
-  //-input(type="file", ng-file-select="onFileSelect($files)", multiple accept="image/*")
-  //-div(class="button", ng-file-select="onFileSelect($files)", data-multiple="true")
-  //-div(ng-file-drop="onFileSelect($files)", ng-file-drag-over-class="optional-css-class-name-or-function", ng-show="dropSupported") drop files here
-  //-div(ng-file-drop-available="dropSupported=true", ng-show="!dropSupported") HTML5 Drop File is not supported!
-  //-button(ng-click="upload.abort()") Cancel Upload
-//-form(method="post", enctype="multipart/form-data", action="/api/assignments/upload")
-  input(type="text", name="username")
-  input(type="password", name="password")
-  input(type="file", name="thumbnail")
-  input(type="submit")
-//-form(action="/api/assignments/upload", method="post", enctype="multipart/form-data")
-  //-input(type="file", name="displayImage", accept="application/pdf")
-  //-input(type="submit", name="submit", value="Submit")
-.col-md-12
-    | In class {{class_id}}. \[ \sum_{i=1}^{n}i=\frac{1}{2}n(n+1) \]
+head
+  style.
+    body {
+      background: #70A821;
+      background: -webkit-gradient(radial, circle, 0, circle, 400, color-stop(0%, rgba(199, 247, 61, 0.4)), color-stop(100%, rgba(172, 205, 99, 0))), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+      background: -webkit-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+      background: -moz-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+      background: -o-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+      background: radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+      color: #fff;
+      margin: 0 auto;
+      }
 
-div
-  ul
-    li(ng-repeat="assignment in assignments")
-      a(href="assignment/{{assignment._id}}") Assignment \#{{assignment._id}}
+
+
+.col-md-12
+    h1 In class {{class_id}}
+
+.col-md-8
+  h2 Assignments
+    ul
+
+.col-md-4
+  h2 Students
+    ul
 
 .container
   h3 Fake Assignment uploader
