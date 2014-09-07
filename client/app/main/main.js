@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('worktogethrApp')
   .config(function ($stateProvider) {
     $stateProvider

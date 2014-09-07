@@ -19,7 +19,10 @@ head
 .col-md-8
   h2 Assignments
     ul
-
+div
+  ul
+    li(ng-repeat="assignment in assignments")
+      a(href="assignment/{{assignment._id}}") Assignment \#{{assignment._id}}
 
 
 
@@ -29,11 +32,11 @@ head
 
 
 
-div#upload
-  h4 Upload an Assignment
-  form
-    input(type="file")
-    input(type="submit" value="Upload")
+.container
+  h3 Assignment Connector
+  input(type="text", ng-model="assignment_name")
+  input(type="text", ng-model="dummy_pdf")
+  button(ng-click="manualAddPDF(dummy_pdf)") Attach Assignment
 //-.container
   h3 Fake Assignment uploader
   input(type="text", ng-model="dummy_pdf")
