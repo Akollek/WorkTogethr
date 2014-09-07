@@ -118,21 +118,21 @@ exports.manualAddPDF = function(req, res) {
     , name: req.body.name
   });
   assignment.save(function(err) {
-    var file = fs.createWriteStream("temp/" + assignment._id + ".pdf");
+    var file = fs.createWriteStream("public/temp/" + assignment._id + ".pdf");
     var request = http.get(req.body.pdf_link, function(response) {
       console.log('writing file');
       response.pipe(file);
       //java stuff
       response.on('end', function() {
         console.log('done writing file');
-        child = exec('pdftoppm -png temp/' + assignment._id + '.pdf temp/' + assignment._id,
+        child = exec('pdftoppm -png public/temp/' + assignment._id + '.pdf public/temp/' + assignment._id,
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
           console.log('stderr: ' + stderr);
           if (error !== null) {
             console.log('exec error: ' + error);
           }
-          child = exec('/bin/bash questioncutter/JavaApplication1/parse-script temp/' + assignment._id + ' temp/' + assignment._id + '-1 ./',
+          child = exec('/bin/bash questioncutter/JavaApplication1/parse-script public/temp/' + assignment._id + ' public/temp/' + assignment._id + '-1 ./',
           //child = exec('/bin/bash ../../../questioncutter/JavaApplication1/parse-script temp/' + assignment._id + '.pdf temp/' + assignment._id + '-01.png',
           function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
