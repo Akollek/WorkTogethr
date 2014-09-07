@@ -1,17 +1,16 @@
 
 
-head
-  style.
-    body {
-      background: #70A821;
-      background: -webkit-gradient(radial, circle, 0, circle, 400, color-stop(0%, rgba(199, 247, 61, 0.4)), color-stop(100%, rgba(172, 205, 99, 0))), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
-      background: -webkit-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
-      background: -moz-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
-      background: -o-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
-      background: radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
-      color: #fff;
-      margin: 0 auto;
-      }
+style.
+  body {
+    background: #70A821;
+    background: -webkit-gradient(radial, circle, 0, circle, 400, color-stop(0%, rgba(199, 247, 61, 0.4)), color-stop(100%, rgba(172, 205, 99, 0))), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+    background: -webkit-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+    background: -moz-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+    background: -o-radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+    background: radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
+    color: #fff;
+    margin: 0 auto;
+    }
 
 
 .container
@@ -24,7 +23,7 @@ head
       h3.page-header Add Class:
       //-p.input-group
       input.form-control#inputclass(type='text', placeholder='Add a new class here', ng-model='class_id')
-        script
+        script.
           $('#inputclass').keydown(function (e){
             if(e.keyCode == 13){
             addClass();
