@@ -1,5 +1,10 @@
 'use strict';
 
+var vcapServices = [];
+
+if (process.env.VCAP_SERVICES) {
+  vcapServices = JSON.parse(process.env.VCAP_SERVICES); 
+}
 // Production specific configuration
 // =================================
 module.exports = {
@@ -10,6 +15,7 @@ module.exports = {
 
   // Server port
   port:     process.env.OPENSHIFT_NODEJS_PORT ||
+            process.env.VCAP_APP_PORT ||
             process.env.PORT ||
             8080,
 
@@ -17,7 +23,9 @@ module.exports = {
   mongo: {
     uri:    process.env.MONGOLAB_URI ||
             process.env.MONGOHQ_URL ||
+            vcapServices.mongolab[0].credentials.uri ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/worktogethr'
   }
 };
+
