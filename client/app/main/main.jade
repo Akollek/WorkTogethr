@@ -2,11 +2,14 @@ div(ng-include='"components/navbar/navbar.html"')
 
 .container
   .col-lg-6
+    ul
+      li(ng-repeat="course in courses")
+        a(href="class/{{course.name}}", style="display: block;") {{course.name}}
     form.thing-form
       h1.page-header Add Class:
       p.input-group
       input.form-control(type='text', placeholder='Add a new class here', ng-model='class_id')
-      a.btn.btn-primary(href="/class/{{class_id}}") Go
+      a.btn.btn-primary(ng-click="addClass()") Go
 //-header#banner.hero-unit
   //-.container
     //-h1 worktogethr
