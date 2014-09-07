@@ -13,19 +13,25 @@ head
       margin: 0 auto;
       }
 
-div(ng-include='"components/navbar/navbar.html"',style="width")
+//-div(ng-include='"components/navbar/navbar.html"',style="width")
 
 .container
   .col-lg-6
-    ul
-      li(ng-repeat="course in courses")
-        a(href="class/{{course.name}}", style="display: block;") {{course.name}}
+    h1 Classes
+      ul
+        li(ng-repeat="course in courses")
+          a(href="class/{{course.name}}", style="display: block;") {{course.name}}
     form.thing-form
-      h1.page-header Add Class:
-      p.input-group
-
-      input.form-control(type='text', placeholder='Add a new class here', ng-model='class_id')
-      a.btn.btn-primary(ng-click="addClass()") Go
+      h3.page-header Add Class:
+      //-p.input-group
+      input.form-control#inputclass(type='text', placeholder='Add a new class here', ng-model='class_id')
+        script
+          $('#inputclass').keydown(function (e){
+            if(e.keyCode == 13){
+            addClass();
+          }
+          })
+      //-a.btn.btn-primary(ng-click="addClass()") Go
 
 //-header#banner.hero-unit
   //-.container
