@@ -13,13 +13,15 @@ style.
   background: radial-gradient(circle, rgba(199, 247, 61, 0.4) 0%, rgba(172, 205, 99, 0) 400px), url('/wp-content/themes/jc/img/../img/bg_walltexture.jpg?1374772574'), #589324;
   color: #fff;
   text-align: center;
+  margin: 0 auto;
   }
 link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css')
-body
-h1(centered='centered', g='1-1', style='font-family: \'Georgia\'; font-size: 5rem; margin-top: 3rem;') Moxedu
-h2(centered='centered', style='margin-top: 5rem; margin-bottom: 3rem;') Sign in with FaceBook to join the session.
-button.fa.fa-facebook(centered='centered', style='background-image: linear-gradient(to bottom, #486bb5 0%, #233b6c 100%);', g='1-2 push-1-2 large primary', ng-click='loginOauth("facebook")'))          Join session
-.jumbotron
+body(style="text-align: right;")  
+div(style="margin-left:427px;margin-top:100px;")
+  h1(centered='centered', g='1-1', style='font-family: \'Georgia\'; font-size: 7rem; margin-top: 3rem;text-align:center;') Moxedu
+  h2(centered='centered', style='margin-top: 5rem; margin-bottom: 3rem;') Sign in with Facebook
+  button.fa.fa-facebook(centered='centered', style='background-image: linear-gradient(to bottom, #486bb5 0%, #233b6c 100%);color:#FFFFFF;', ng-click='loginOauth("facebook")')   Join session
+  //-.jumbotron
 
 //-div(ng-include='"components/navbar/navbar.html"')
 //-.container
