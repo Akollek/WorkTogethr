@@ -1,3 +1,4 @@
+
 script(src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")
 
 
@@ -9,7 +10,8 @@ div.sidebar(style="padding-left:5px;")
       button(ng-click="clickQuestion(question._id)") {{question._id}}
       | {{question}}
 
-  div(ng-show="question_view")
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+div(ng-show="question_view")
   p question view
   | question is: {{question_id}}
   | chatroom is here
@@ -22,8 +24,6 @@ a(href="public/540c1c17e3be43a51afd8e26.pdf") pdf
 div(ng-show="!question_view")
   p no question selected view
 
-
-
   br
   input#MathInput(onkeydown='UpdateMath(this.value)', size="27")
   input.btn(type="button" value="Send" style="padding-left:10px;")
@@ -32,6 +32,7 @@ div(ng-show="!question_view")
 
   #box.box(style='visibility: hidden;')
     #MathOutput.output $${}$$
+
 
   p no question selected view
   script
