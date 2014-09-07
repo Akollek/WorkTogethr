@@ -2,19 +2,26 @@
 
 angular.module('worktogethrApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+    $scope.courses = [];
+
+    $http.get('/api/courses/').success(function(data) {
+      console.log('data: ', data);
+      $scope.courses = data;
+    });
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
-    $scope.addThing = function() {
+    $scope.addClass = function() {
       if($scope.newThing === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/courses/', { name: $scope.class_id})
+      .success(function(data) {
+        $scope.courses.push(data);
+      })
     };
 
     $scope.deleteThing = function(thing) {
