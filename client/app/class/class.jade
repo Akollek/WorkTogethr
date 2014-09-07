@@ -14,17 +14,27 @@ head
 
 
 .col-md-12
-    h1 In class {{class_id}}
+    h1 In Class {{class_id}}
 
 .col-md-8
   h2 Assignments
     ul
 
+
+
+
 .col-md-4
   h2 Students
     ul
 
-.container
+
+
+div#upload
+  h4 Upload an Assignment
+  form
+    input(type="file")
+    input(type="submit" value="Upload")
+//-.container
   h3 Fake Assignment uploader
   input(type="text", ng-model="dummy_pdf")
   button(ng-click="manualAddPDF(dummy_pdf)") Fake upload PDF
