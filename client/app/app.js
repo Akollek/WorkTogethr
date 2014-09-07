@@ -12,8 +12,8 @@ angular.module('worktogethrApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
-
+      .otherwise('/main');
+    
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })

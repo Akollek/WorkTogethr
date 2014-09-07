@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 angular.module('worktogethrApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.courses = [];

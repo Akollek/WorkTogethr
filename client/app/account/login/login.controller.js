@@ -15,7 +15,7 @@ angular.module('worktogethrApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $window.location.path('/main');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
