@@ -11,7 +11,9 @@ angular.module('worktogethrApp')
   , upload
   ) {
     $scope.question_images = ['enter image url', 'http://i.imgur.com/S84BANr.jpg'];
-    $scope.dummy_pdf = 'http://www.education.gov.yk.ca/pdf/pdf-test.pdf';
+    $scope.dummy_pdf = 'http://carolyn.tk/goestomhacks/latexquestion.pdf';
+
+    $scope.assignment_name = 'Assignment1';
 
     $scope.doUpload = function () {
       upload({
@@ -79,13 +81,17 @@ angular.module('worktogethrApp')
 
 
     // hackily adds an assignment with hardcoded questions
-    $scope.manualAddPdF = function() {
+    $scope.manualAddPDF = function(pdf_link) {
+      console.log('manual');
+
       var class_id = $location.$$url.split('/')[2];
       var update = {
         question_images: $scope.question_images
         , class_id: class_id
+        , name: $scope.assignment_name
+        , pdf_link: pdf_link
       };
-      $http.post('/api/assignments/manual_upload', update)
+      $http.post('/api/assignments/manual_upload_pdf', update)
         .success(function(data, status, headers, config) {
           console.log('assignment: ', data);
           $scope.assignments.push(data);
